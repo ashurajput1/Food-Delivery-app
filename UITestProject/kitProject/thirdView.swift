@@ -17,8 +17,8 @@ struct thirdView: View {
                     viewModel.isOrderViewPresent = true
                 }
         }
+        .scrollIndicators(.never)
         .onAppear{
-            print("alkmsadlfm")
             NetworkManager.shared.fetchData(from:  "https://seanallen-course-backend.herokuapp.com/swiftui-fundamentals/appetizers") { (result: Result<MenuResponse, Error>) in
                 switch result
                 {
@@ -33,11 +33,11 @@ struct thirdView: View {
             }
         }
         .sheet(isPresented:$viewModel.isOrderViewPresent, content: {
-            orderView(itemDetail: viewModel.itemDetail!)
+            orderView(isVisible: $viewModel.isOrderViewPresent, itemDetail: viewModel.itemDetail!)
         })
     }
 }
 
 #Preview {
-    thirdView()
+   thirdView(viewModel: thirdViewModel())
 }

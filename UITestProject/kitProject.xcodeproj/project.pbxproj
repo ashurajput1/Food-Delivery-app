@@ -24,6 +24,10 @@
 		10D68C902C64A02E00CC372A /* OrderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D68C8F2C64A02E00CC372A /* OrderListView.swift */; };
 		10D68C922C65074200CC372A /* UserAccountDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D68C912C65074200CC372A /* UserAccountDetailsView.swift */; };
 		10D68C942C65165300CC372A /* UserdefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D68C932C65165300CC372A /* UserdefaultManager.swift */; };
+		10D68CCE2C6CDBFF00CC372A /* AppString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D68CCD2C6CDBFF00CC372A /* AppString.swift */; };
+		10D68CD22C75033400CC372A /* emptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D68CD12C75033400CC372A /* emptyState.swift */; };
+		10D68CD42C75A4B900CC372A /* LocationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D68CD32C75A4B900CC372A /* LocationVM.swift */; };
+		10D68CD62C75A61D00CC372A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D68CD52C75A61D00CC372A /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +68,10 @@
 		10D68C8F2C64A02E00CC372A /* OrderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListView.swift; sourceTree = "<group>"; };
 		10D68C912C65074200CC372A /* UserAccountDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountDetailsView.swift; sourceTree = "<group>"; };
 		10D68C932C65165300CC372A /* UserdefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserdefaultManager.swift; sourceTree = "<group>"; };
+		10D68CCD2C6CDBFF00CC372A /* AppString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppString.swift; sourceTree = "<group>"; };
+		10D68CD12C75033400CC372A /* emptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emptyState.swift; sourceTree = "<group>"; };
+		10D68CD32C75A4B900CC372A /* LocationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationVM.swift; sourceTree = "<group>"; };
+		10D68CD52C75A61D00CC372A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,9 +123,12 @@
 			isa = PBXGroup;
 			children = (
 				10D68C8A2C5E492500CC372A /* Models */,
+				10D68CCD2C6CDBFF00CC372A /* AppString.swift */,
 				10D68C4E2C55323500CC372A /* kitProjectApp.swift */,
 				10D68C8F2C64A02E00CC372A /* OrderListView.swift */,
 				10D68C912C65074200CC372A /* UserAccountDetailsView.swift */,
+				10D68CD32C75A4B900CC372A /* LocationVM.swift */,
+				10D68CD12C75033400CC372A /* emptyState.swift */,
 				10D68C7E2C59380800CC372A /* thirdView.swift */,
 				10D68C8D2C5E507A00CC372A /* orderView.swift */,
 				10D68C862C5BE87F00CC372A /* thirdViewModel.swift */,
@@ -161,6 +172,7 @@
 			children = (
 				10D68C882C5E490800CC372A /* Models.swift */,
 				10D68C932C65165300CC372A /* UserdefaultManager.swift */,
+				10D68CD52C75A61D00CC372A /* MapView.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -296,9 +308,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				10D68C8E2C5E507A00CC372A /* orderView.swift in Sources */,
+				10D68CD62C75A61D00CC372A /* MapView.swift in Sources */,
+				10D68CCE2C6CDBFF00CC372A /* AppString.swift in Sources */,
 				10D68C7F2C59380800CC372A /* thirdView.swift in Sources */,
 				10D68C792C557B6300CC372A /* File.swift in Sources */,
 				10D68C832C59452100CC372A /* NetworkManager.swift in Sources */,
+				10D68CD42C75A4B900CC372A /* LocationVM.swift in Sources */,
+				10D68CD22C75033400CC372A /* emptyState.swift in Sources */,
 				10D68C4F2C55323500CC372A /* kitProjectApp.swift in Sources */,
 				10D68C902C64A02E00CC372A /* OrderListView.swift in Sources */,
 				10D68C892C5E490800CC372A /* Models.swift in Sources */,

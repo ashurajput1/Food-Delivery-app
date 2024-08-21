@@ -10,21 +10,31 @@ import SwiftUI
 struct OrderListView: View {
     @EnvironmentObject var userorderList:UserOrderList
     var body: some View {
-        List {
-            ForEach(userorderList.userOrderList) { itemDetails in
-                Listcell(itemData: itemDetails)
+        ZStack
+        {
+            List {
+                ForEach(userorderList.userOrderList) { itemDetails in
+                    Listcell(itemData: itemDetails)
+                }
+                .onDelete(perform: userorderList.delete)
             }
-            .onDelete(perform: userorderList.delete)
+            emptyStateView()
+                .opacity(userorderList.emptyList ? 1:0)
         }
         .onAppear(perform: {
-            if let orderList  = UserdefaultManager.shared.retriveData(key: "orderList") as [MenuItem]?  {
+            if let orderList  = UserdefaultManager.shared.retriveData(key: userDefaultKeys.orderList) as [MenuItem]?  {
                 userorderList.userOrderList = orderList
+            }
+            if userorderList.userOrderList.count == 0 {
+                userorderList.emptyList = true
+            } else {
+                userorderList.emptyList = false
             }
         })
     }
 }
 
-//#Preview {
-//    OrderListView()
-//               .environmentObject(UserOrderList())
-//}
+#Preview {
+    OrderListView()
+               .environmentObject(UserOrderList())
+}

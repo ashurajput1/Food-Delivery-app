@@ -38,6 +38,7 @@ class UserdefaultManager:ObservableObject {
 }
 struct userDefaultKeys {
     
-    var userInfo = "userInfo"
+    static let userInfo = "userInfo"
+    static let orderList = "orderList"
     
 }

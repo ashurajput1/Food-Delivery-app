@@ -28,9 +28,15 @@ struct ContentView: View {
 }
 class UserOrderList:ObservableObject {
     @Published var userOrderList:[MenuItem] = []
+    @Published var emptyList:Bool = true
     func delete(at offsets: IndexSet) {
         userOrderList.remove(atOffsets: offsets)
         UserdefaultManager.shared.saveData(model: userOrderList, key: "orderList")
+        if userOrderList.count == 0 {
+            emptyList = true
+        } else {
+            emptyList = false
+        }
     }
 }
 

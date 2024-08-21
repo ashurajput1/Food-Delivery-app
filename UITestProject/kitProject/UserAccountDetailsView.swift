@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct UserAccountDetailsView: View {
     @StateObject var validateInfo = ValidateInfo()
+    @StateObject private var viewModel = LocationViewModel()
     @State var v = false
+    @State var isMapVisible = false
     var body: some View {
         Form(content: {
             Section {
@@ -19,9 +22,9 @@ struct UserAccountDetailsView: View {
                 Button(action: {
                     validateInfo.CheckInfo()
                     if validateInfo.error == nil {
-                        let userInformation = userInformation(userName: validateInfo.userDetails.userName,PhoneNumber: validateInfo.userDetails.PhoneNumber,userEmail: validateInfo.userDetails.userEmail)
+                        let userInformation = userInformation(userName: validateInfo.userDetails.userName,PhoneNumber: validateInfo.userDetails.PhoneNumber,userEmail: validateInfo.userDetails.userEmail,birthDate: validateInfo.userDetails.birthDate)
                         
-                        UserdefaultManager.shared.saveData(model: userInformation, key: "userKey")
+                        UserdefaultManager.shared.saveData(model: userInformation, key: userDefaultKeys.userInfo)
                         v = true
                     }
                 }, label: {
@@ -42,15 +45,30 @@ struct UserAccountDetailsView: View {
                         }
                     )
                 }
+            Section {
+                DatePicker("Date Of Birth", selection: $validateInfo.userDetails.birthDate, displayedComponents: .date)
+                Button(action: {
+                    isMapVisible = true
+                }, label: {
+                    Text("Choose Location")
+                        .foregroundColor(.black)
+                        .background(.red)
+                })
+            }
         })
         .onAppear(perform: {
-            if let user  = UserdefaultManager.shared.retriveData(key: "userKey") as userInformation? {
+            if let user  = UserdefaultManager.shared.retriveData(key: userDefaultKeys.userInfo) as userInformation? {
                 validateInfo.userDetails.userName = user.userName
                 validateInfo.userDetails.userEmail = user.userEmail
                 validateInfo.userDetails.PhoneNumber = user.PhoneNumber
+                validateInfo.userDetails.birthDate = user.birthDate
             }
             
 
+        })
+        .sheet(isPresented:$isMapVisible, content: {
+            var f = CLLocationCoordinate2D(latitude: 100.7749, longitude: -122.4194)
+            MapView(selectedLocation: $viewModel.selectedLocation)
         })
     }
 }
@@ -80,6 +98,7 @@ struct userInformation: Codable {
     var userName:String = ""
     var PhoneNumber:String = ""
     var userEmail:String = ""
+    var birthDate:Date = Date()
 }
 
 

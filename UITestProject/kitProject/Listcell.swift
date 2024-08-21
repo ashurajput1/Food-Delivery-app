@@ -16,12 +16,15 @@ struct Listcell: View {
             imgView(urlString: itemData.imageURL)
             VStack(alignment:.leading) {
                 Text("\(itemData.name)")
-                    .fontWeight(.bold)
+                    .fontWeight(.medium)
                 Text("\(itemData.description)")
+                    .fontWeight(.light)
+                    .font(.system(size: 15))
             }
            
         }
-
+        .frame(height: 80)
+        
     }
 }
 class imageLoader:ObservableObject {
