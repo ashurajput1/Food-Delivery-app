@@ -11,7 +11,7 @@ import CoreLocation
 struct UserAccountDetailsView: View {
     @StateObject var validateInfo = ValidateInfo()
     @StateObject private var viewModel = LocationViewModel()
-    @State var v = false
+    @State var isAlertVisible = false
     @State var isMapVisible = false
     var body: some View {
         Form(content: {
@@ -21,39 +21,40 @@ struct UserAccountDetailsView: View {
                 TextField("Email", text: $validateInfo.userDetails.userEmail)
                 Button(action: {
                     validateInfo.CheckInfo()
-                    if validateInfo.error == nil {
                         let userInformation = userInformation(userName: validateInfo.userDetails.userName,PhoneNumber: validateInfo.userDetails.PhoneNumber,userEmail: validateInfo.userDetails.userEmail,birthDate: validateInfo.userDetails.birthDate)
                         
                         UserdefaultManager.shared.saveData(model: userInformation, key: userDefaultKeys.userInfo)
-                        v = true
-                    }
+                        isAlertVisible = true
                 }, label: {
                     Text("Submit")
+                        .tint(.darkGreen)
+                        .fontWeight(.semibold)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                                 .multilineTextAlignment(.center)
+                    
                 })
             }
-            .alert(isPresented: $v) {
-                    Alert(
-                        title: Text("Alert Title"),
-                        message: Text("This is the alert message."),
-                        primaryButton: .default(Text("OK")) {
-                            // Action for OK button
-                        },
-                        secondaryButton: .cancel {
-                            // Action for Cancel button
-                        }
-                    )
+            .alert(isPresented: $isAlertVisible) {
+                var alertMessage = "Submitted SuccessFully"
+                var alertTitle = "Submit"
+                if validateInfo.error != nil {
+                    alertMessage = validateInfo.error?.alertMessage ?? ""
+                    alertTitle = validateInfo.error?.alertTitle ?? ""
+                }
+               return Alert(
+                                            title: Text(alertTitle),
+                                            message: Text(alertMessage),
+                                            primaryButton: .default(Text("OK")) {
+                                                // Action for OK button
+                                            },
+                                            secondaryButton: .cancel {
+                                                // Action for Cancel button
+                                 
+                    }
+                )
                 }
             Section {
                 DatePicker("Date Of Birth", selection: $validateInfo.userDetails.birthDate, displayedComponents: .date)
-                Button(action: {
-                    isMapVisible = true
-                }, label: {
-                    Text("Choose Location")
-                        .foregroundColor(.black)
-                        .background(.red)
-                })
             }
         })
         .onAppear(perform: {
@@ -68,7 +69,7 @@ struct UserAccountDetailsView: View {
         })
         .sheet(isPresented:$isMapVisible, content: {
             var f = CLLocationCoordinate2D(latitude: 100.7749, longitude: -122.4194)
-            MapView(selectedLocation: $viewModel.selectedLocation)
+            MaptView(isVisibleMap: $isMapVisible)
         })
     }
 }
@@ -93,6 +94,34 @@ class ValidateInfo:ObservableObject {
 }
 enum AlertError:Error {
     case UserNameEmpty,EmailEmpty,PhoneNoEmpty
+    var alertMessage:String {
+        var message = "SuccessFully Submitted"
+        switch self {
+        case .UserNameEmpty:
+            message = "Username can't be empty"
+            break
+        case .PhoneNoEmpty:
+            message = "PhoneNo can't be empty"
+            break
+        case .EmailEmpty:
+            message = "Email can't be empty"
+        }
+        return message
+    }
+    var alertTitle:String {
+        var Title = "SuccessFully Submitted"
+        switch self {
+        case .UserNameEmpty:
+            Title = "Error"
+            break
+        case .PhoneNoEmpty:
+            Title = "Error"
+            break
+        case .EmailEmpty:
+            Title = "Error"
+        }
+        return Title
+    }
 }
 struct userInformation: Codable {
     var userName:String = ""

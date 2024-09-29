@@ -13,5 +13,6 @@ class thirdViewModel:ObservableObject{
     @Published var itemsArray:[MenuItem] = []
     @Published var itemDetail:MenuItem? = nil
     @Published var isOrderViewPresent:Bool = false
+    @Published var isLoading:Bool = true
     
 }

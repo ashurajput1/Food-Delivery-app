@@ -12,15 +12,15 @@ struct ContentView: View {
         TabView {
             thirdView()
                 .tabItem {
-                                 Label("First", systemImage: "1.circle")
+                                 Label("Home", systemImage: "house")
                         }
             OrderListView()
                 .tabItem {
-                    Label("Second",systemImage: "2.circle")
+                    Label("order",systemImage: "iphone.smartbatterycase.gen2")
                 }
             UserAccountDetailsView()
                 .tabItem {
-                    Label("Third", systemImage: "3.circle")
+                    Label("Account", systemImage: "person.circle.fill")
                 }
         }
        

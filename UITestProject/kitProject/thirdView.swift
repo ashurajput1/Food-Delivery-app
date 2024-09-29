@@ -10,13 +10,24 @@ import SwiftUI
 struct thirdView: View {
     @StateObject var viewModel = thirdViewModel()
     var body: some View {
-        List(viewModel.itemsArray) { itemData in
-            Listcell(itemData: itemData)
-                .onTapGesture {
-                    viewModel.itemDetail = itemData
-                    viewModel.isOrderViewPresent = true
-                }
+        ZStack {
+            List(viewModel.itemsArray) { itemData in
+                Listcell(itemData: itemData)
+                    .onTapGesture {
+                        viewModel.itemDetail = itemData
+                        viewModel.isOrderViewPresent = true
+                    }
+            }
+            if viewModel.isLoading {
+                ProgressView()
+                    .scaleEffect(2, anchor: .leading)
+                    .progressViewStyle(CircularProgressViewStyle(tint: .red))
+            } else {
+                
+            }
+
         }
+
         .scrollIndicators(.never)
         .onAppear{
             NetworkManager.shared.fetchData(from:  "https://seanallen-course-backend.herokuapp.com/swiftui-fundamentals/appetizers") { (result: Result<MenuResponse, Error>) in
@@ -24,12 +35,14 @@ struct thirdView: View {
                 {
                 case .success(let response):
                     DispatchQueue.main.async {
+                        viewModel.isLoading = false
                         viewModel.itemsArray = response.request
                     }
                   
                 case .failure(let error):
                     print(error)
                 }
+               
             }
         }
         .sheet(isPresented:$viewModel.isOrderViewPresent, content: {

@@ -28,6 +28,7 @@
 		10D68CD22C75033400CC372A /* emptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D68CD12C75033400CC372A /* emptyState.swift */; };
 		10D68CD42C75A4B900CC372A /* LocationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D68CD32C75A4B900CC372A /* LocationVM.swift */; };
 		10D68CD62C75A61D00CC372A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D68CD52C75A61D00CC372A /* MapView.swift */; };
+		10D68CD92C76036100CC372A /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D68CD82C76036100CC372A /* OrderViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		10D68C4B2C55323500CC372A /* kitProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kitProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		10D68C4B2C55323500CC372A /* Appetizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Appetizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10D68C4E2C55323500CC372A /* kitProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kitProjectApp.swift; sourceTree = "<group>"; };
 		10D68C522C55323800CC372A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10D68C552C55323800CC372A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -72,6 +73,8 @@
 		10D68CD12C75033400CC372A /* emptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emptyState.swift; sourceTree = "<group>"; };
 		10D68CD32C75A4B900CC372A /* LocationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationVM.swift; sourceTree = "<group>"; };
 		10D68CD52C75A61D00CC372A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		10D68CD72C75E93900CC372A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		10D68CD82C76036100CC372A /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +115,7 @@
 		10D68C4C2C55323500CC372A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				10D68C4B2C55323500CC372A /* kitProject.app */,
+				10D68C4B2C55323500CC372A /* Appetizer.app */,
 				10D68C5B2C55323900CC372A /* kitProjectTests.xctest */,
 				10D68C652C55323900CC372A /* kitProjectUITests.xctest */,
 			);
@@ -122,6 +125,7 @@
 		10D68C4D2C55323500CC372A /* kitProject */ = {
 			isa = PBXGroup;
 			children = (
+				10D68CD72C75E93900CC372A /* Info.plist */,
 				10D68C8A2C5E492500CC372A /* Models */,
 				10D68CCD2C6CDBFF00CC372A /* AppString.swift */,
 				10D68C4E2C55323500CC372A /* kitProjectApp.swift */,
@@ -173,6 +177,7 @@
 				10D68C882C5E490800CC372A /* Models.swift */,
 				10D68C932C65165300CC372A /* UserdefaultManager.swift */,
 				10D68CD52C75A61D00CC372A /* MapView.swift */,
+				10D68CD82C76036100CC372A /* OrderViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -194,7 +199,7 @@
 			);
 			name = kitProject;
 			productName = kitProject;
-			productReference = 10D68C4B2C55323500CC372A /* kitProject.app */;
+			productReference = 10D68C4B2C55323500CC372A /* Appetizer.app */;
 			productType = "com.apple.product-type.application";
 		};
 		10D68C5A2C55323900CC372A /* kitProjectTests */ = {
@@ -323,6 +328,7 @@
 				10D68C8C2C5E4C1C00CC372A /* TabView.swift in Sources */,
 				10D68C942C65165300CC372A /* UserdefaultManager.swift in Sources */,
 				10D68C812C59388400CC372A /* Listcell.swift in Sources */,
+				10D68CD92C76036100CC372A /* OrderViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +422,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -472,6 +479,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
@@ -488,6 +496,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"kitProject/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = kitProject/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"want to loacate your location\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -499,7 +509,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = firstdApp.com.kitProject;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Appetizer;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -516,6 +526,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"kitProject/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = kitProject/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"want to loacate your location\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -527,7 +539,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = firstdApp.com.kitProject;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Appetizer;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

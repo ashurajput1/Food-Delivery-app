@@ -9,7 +9,7 @@ import Foundation
 import MapKit
 
 class LocationViewModel: ObservableObject {
-    @Published var selectedLocation: CLLocationCoordinate2D? = CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194)
+    @Published var selectedLocation: CLLocationCoordinate2D? = CLLocationCoordinate2D(latitude: 100, longitude: -122.4194)
 
     func updateLocation(coordinate: CLLocationCoordinate2D) {
         self.selectedLocation = coordinate
